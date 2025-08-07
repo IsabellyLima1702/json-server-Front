@@ -24,3 +24,18 @@ async function determinarFiguras() {
 }
 
 determinarFiguras()
+
+function gerarTexto(link){
+    const arquivoDescricao = document.getElementById('texto')
+    const descricao = document.createElement('h2')
+    descricao.textContent = link.legenda
+    arquivoDescricao.appendChild(descricao)
+}
+
+async function determinarTexto(){
+    const texto = await encontrarTexto()
+    const arquivoDescricao = document.getElementById('texto')
+    arquivoDescricao.replaceChildren('')
+    texto.forEach(gerarTexto)
+    console.log(texto)
+}
